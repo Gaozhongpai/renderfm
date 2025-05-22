@@ -11,6 +11,9 @@ function domReady() {
         hideTexts: false,
         textPosition: "bottom"
     });
+    
+    // Initialize with OOD-TF1 images (index 4)
+    objectSceneEvent(4);
 }
 
 function objectSceneEvent(idx) {
@@ -70,7 +73,7 @@ function updateTabStates(navId, activeIdx) {
 
 function getImageFolder(idx, sliderType) {
     let folders = ['ID1', 'ID2', 'OOD1', 'OOD2', 'OOD-TF1', 'OOD-TF2', 
-                   'OOD-Bone1','OOD-Bone2'];
+                   'OOD-Bone1', 'OOD-Bone2'];
     return folders[idx];
 }
 
