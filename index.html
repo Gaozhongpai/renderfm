@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="Render-FM" />
+  <meta property="og:description" content="Render-FM: A Foundation Model for Real-time Photorealistic Volumetric Rendering"/>
+  <meta property="og:url" content="https://gaozhongpai.github.io/renderfm/" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/images/7dgs.webp" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+
+
+  <meta name="twitter:title" content="Render-FM">
+  <meta name="twitter:description" content="Render-FM: A Foundation Model for Real-time Photorealistic Volumetric Rendering">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/7dgs.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="6DGS, ray tracing, volumetric rendering">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>7DGS: Unified Spatial-Temporal-Angular Gaussian Splatting</title>
+  <link rel="icon" type="image/x-icon" href="static/images/7dgs.webp">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="static/css/bootstrap-4.4.1.css">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- Bulma and Font Awesome -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- jQuery and JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script src="static/js/app.js"></script>
+  <script src="static/js/video_comparison.js"></script>
+
+  <link rel="stylesheet" href="static/css/dics.original.css">
+  <script src="static/js/event_handler.js"></script>
+  <script src="static/js/dics.original.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Render-FM: A Foundation Model for Real-time Photorealistic Volumetric Rendering</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href=https://sites.google.com/site/gaozhongpai/home target="_blank">Zhongpai Gao</a>,</span>
+              <span class="author-block">
+                <a href="https://mzhengrpi.github.io/" target="_blank">Meng Zheng</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://planche.me/" target="_blank">Benjamin Planche</a>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=KQnKUHKGFdUC&hl=en" target="_blank">Anwesa
+                  Choudhuri</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=S2BT6ogAAAAJ&hl=en" target="_blank">Terrence
+                  Chen</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://wuziyan.com/" target="_blank">Ziyan Wu</a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">United Imaging Intelligence, Boston MA, USA</span>
+              <span class="eql-cntrb"><small><br>{zhongpai.gao}@uii-ai.com</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2503.07946" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Notebook link -->
+                <span class="link-block">
+                  <a href="https://notebooklm.google.com/notebook/e10e7d50-d32d-4f7f-abaf-45f908bd04ba/audio"
+                    target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-podcast"></i>
+                    </span>
+                    <span>NotebookLM</span>
+                  </a>
+                </span>
+
+                 <!-- Github link -->
+                 <span class="link-block">
+                  <a href="https://drive.google.com/file/d/1kyu-l_Udt8ti1ShRUbsuOBTOtS4ekXoV/view?usp=sharing"
+                    target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-image"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser image -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static\images\teaser.png" alt="Teaser Image" id="tree" style="height: 100%; width: 100%;">
+        <h2 class="subtitle has-text-centered">
+          Pipeline comparison of a) 6DGS with per-scan optimization and b) Our Render-FM with feed-forward prediction.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser image -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Volumetric rendering of Computed Tomography (CT) scans is crucial for visualizing complex 3D anatomical structures in medical imaging. Current high-fidelity approaches, especially neural rendering techniques, require time-consuming per-scene optimization, limiting clinical applicability due to computational demands and poor generalizability. We propose Render-FM, a novel foundation model for direct, real-time volumetric rendering of CT scans. Render-FM employs an encoder-decoder architecture that directly regresses 6D Gaussian Splatting (6DGS) parameters from CT volumes, eliminating per-scan optimization through large-scale pre-training on diverse medical data. By integrating robust feature extraction with the expressive power of 6DGS, our approach efficiently generates high-quality, real-time interactive 3D visualizations across diverse clinical CT data. Experiments demonstrate that Render-FM achieves visual fidelity comparable or superior to specialized per-scan methods while drastically reducing preparation time from nearly an hour to seconds for a single inference step. This advancement enables seamless integration into real-time surgical planning and diagnostic workflows. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+<!-- Video carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Interactive Demos on Laptop</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="resources\video\InteractiveDemo_CT_ORG_Volume2_Render-FM.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop height="100%">\
+            <!-- Your video file here -->
+            <source src="resources\video\InteractiveDemo_CT_ORG_Volume2_Render-FM+FT.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="resources\video\InteractiveDemo_CT_ORG_Volume2_6DGS.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video4">
+          <video poster="" id="video4" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="resources\video\InteractiveDemo_CT_ORG_Volume2_6DGS+AGP.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End video carousel -->
+
+<!-- Image carousel -->
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <!-- Results. -->
+      <div class="columns is-centered ">
+        <div class="column is-full-width">
+          <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Results</h2>
+
+          <h3 class="title is-4">Comparison wtih 4DGS</h3>
+
+          <div class="content has-text-justified">
+            <p>
+              Here, we present the qualitative comparison results of 4DGS and 7DGS (Ours), and Ground Truth.
+            </p>
+          </div>
+
+          <div class="container">
+            <ul class="nav nav-tabs nav-fill nav-justified" id="object-scale-recon">
+              <li class="nav-item">
+                <a class="nav-link " onclick="objectSceneEvent(0)">ID1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " onclick="objectSceneEvent(1)">ID2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " onclick="objectSceneEvent(2)">OOD1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(3)">OOD2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" onclick="objectSceneEvent(4)">OOD-TF1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(5)">OOD-TF2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(7)">OOD-Bone1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(8)">OOD-Bone2</a>
+              </li>
+            </ul>
+            <div class="b-dics" style="width: 2600px; font-weight: 800;">
+              <img src="resources/image/ID1/6dgs.png" alt="6DGS">
+              <img src="resources/image/ID1/6dgs_agp.png" alt="6DGS + AGP(Ours)">
+              <img src="resources/image/ID1/renderfm.png" alt="Render-FM(Ours)">
+              <img src="resources/image/ID1/renderfm_ft.png" alt="Render-FM(Ours) + FT">
+              <img src="resources/image/ID1/gt.png" alt="GT">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End image carousel -->
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{gao20257dgs,
+        title={Render-FM: A Foundation Model for Real-time Photorealistic Volumetric Rendering}, 
+        author={Zhongpai Gao and Meng Zheng and Benjamin Planche and Anwesa Choudhuri and Terrence Chen and Ziyan Wu},
+        year={2025},
+        eprint={2503.07946},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV},
+        url={https://arxiv.org/abs/2503.07946}, 
+  }</code></pre>
+    </div>
+  </section>
+  <!--End BibTex citation -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
