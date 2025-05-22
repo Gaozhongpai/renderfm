@@ -16,7 +16,7 @@ function domReady() {
 function objectSceneEvent(idx) {
     let dics = document.querySelectorAll('.b-dics')[0];
     let sections = dics.getElementsByClassName('b-dics__section');
-    let imagesLength = 3;
+    let imagesLength = 5;
 
     updateImages(sections, idx, imagesLength, 'object');
     updateTabStates('object-scale-recon', idx);
