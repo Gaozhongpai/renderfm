@@ -1,35 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="Render-FM" />
-  <meta property="og:description" content="Render-FM: A Feedforward Model for Real-time Photorealistic Volumetric Rendering"/>
+  <!-- Meta tags for social media banners -->
+  <meta name="description" content="Render-FM: feedforward model that directly regresses 6D Gaussian Splatting parameters from CT volumes for real-time photorealistic volumetric rendering, eliminating per-scan optimization. Accepted at ECCV 2026.">
+  <meta property="og:title" content="Render-FM (ECCV 2026)" />
+  <meta property="og:description" content="Render-FM: Feedforward Model for Real-time Photorealistic Volumetric Rendering" />
   <meta property="og:url" content="https://gaozhongpai.github.io/renderfm/" />
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <meta property="og:image" content="static/images/renderfm.webp" />
   <meta property="og:image:width" content="1024" />
   <meta property="og:image:height" content="1024" />
 
-
-  <meta name="twitter:title" content="Render-FM">
-  <meta name="twitter:description" content="Render-FM: A Feedforward Model for Real-time Photorealistic Volumetric Rendering">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:title" content="Render-FM (ECCV 2026)">
+  <meta name="twitter:description" content="Render-FM: Feedforward Model for Real-time Photorealistic Volumetric Rendering">
   <meta name="twitter:image" content="static/images/renderfm.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="6DGS, ray tracing, volumetric rendering">
+  <meta name="keywords" content="6DGS, 6D Gaussian Splatting, feedforward model, volumetric rendering, CT, medical imaging, ECCV 2026">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-  <title>Render-FM: A Feedforward Model for Real-time Photorealistic Volumetric Rendering</title>
+  <title>Render-FM: Feedforward Model for Real-time Photorealistic Volumetric Rendering (ECCV 2026)</title>
   <link rel="icon" type="image/x-icon" href="static/images/renderfm.webp">
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="static/css/bootstrap-4.4.1.css">
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -54,66 +49,293 @@
   <link rel="stylesheet" href="static/css/dics.original.css">
   <script src="static/js/event_handler.js"></script>
   <script src="static/js/dics.original.js"></script>
+
+  <!-- ============================================================= -->
+  <!-- Modern refresh layered on top of the Bulma template.          -->
+  <!-- ============================================================= -->
+  <style>
+    :root {
+      --rfm-primary: #1f6feb;
+      --rfm-primary-dark: #0b3d91;
+      --rfm-accent: #00c2a8;
+      --rfm-ink: #16213e;
+      --rfm-soft: #f4f7fb;
+    }
+
+    body {
+      font-family: 'Noto Sans', 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--rfm-ink);
+    }
+
+    /* ---------- Hero ---------- */
+    .rfm-hero {
+      background: linear-gradient(135deg, #0b3d91 0%, #1f6feb 55%, #00c2a8 130%);
+      color: #fff;
+      padding: 3.2rem 1.5rem 3.6rem;
+    }
+    .rfm-hero .publication-title {
+      font-family: 'Google Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #fff;
+      font-weight: 700;
+      font-size: 3rem;
+      letter-spacing: -0.02em;
+      line-height: 1.14;
+      margin-bottom: 1.6rem;
+      text-shadow: 0 2px 16px rgba(8, 26, 64, 0.28);
+    }
+    .rfm-hero .publication-authors {
+      font-family: 'Google Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.18rem;
+      font-weight: 500;
+      line-height: 1.7;
+      color: #ffffff;
+      text-shadow: 0 1px 8px rgba(8, 26, 64, 0.22);
+    }
+    .rfm-hero .publication-authors .author-block {
+      margin: 0 .35rem;
+      white-space: nowrap;
+    }
+    .rfm-hero .publication-authors a {
+      color: #ffffff !important;
+      font-weight: 500;
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.4);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 4px;
+      transition: color .15s ease, text-decoration-color .15s ease;
+    }
+    .rfm-hero .publication-authors a:hover {
+      color: #ffe680 !important;
+      text-decoration-color: #ffe680;
+    }
+    .rfm-affil {
+      display: inline-block;
+      margin-top: .85rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: .2px;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 8px rgba(8, 26, 64, 0.22);
+    }
+    .rfm-affil small { color: rgba(255,255,255,0.75); }
+    @media (max-width: 768px) {
+      .rfm-hero .publication-title { font-size: 2.1rem; }
+      .rfm-hero .publication-authors { font-size: 1.02rem; }
+    }
+
+    /* ---------- Venue badge ---------- */
+    .rfm-venue {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: .82rem;
+      padding: .45rem 1.15rem;
+      border-radius: 999px;
+      margin-bottom: 1.6rem;
+      backdrop-filter: blur(4px);
+    }
+    .rfm-venue .dot {
+      width: .55rem; height: .55rem; border-radius: 50%;
+      background: #ffe680; box-shadow: 0 0 0 4px rgba(255,230,128,.25);
+    }
+
+    /* ---------- Link buttons ---------- */
+    .rfm-hero .publication-links { margin-top: 1.8rem; }
+    .rfm-hero .external-link.button {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+      font-weight: 600;
+      transition: transform .12s ease, background .15s ease;
+    }
+    .rfm-hero .external-link.button:hover {
+      background: #fff;
+      color: var(--rfm-primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Highlight stat strip ---------- */
+    .rfm-stats {
+      max-width: 980px;
+      margin: -2.2rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 3;
+    }
+    .rfm-stat {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(11, 61, 145, 0.12);
+      padding: 1.3rem 1rem;
+      text-align: center;
+    }
+    .rfm-stat .num {
+      font-family: 'Google Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 2.3rem; font-weight: 700; color: var(--rfm-primary);
+      line-height: 1; letter-spacing: -0.02em;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+      font-variant-numeric: tabular-nums lining-nums;
+    }
+    .rfm-stat .lbl {
+      font-size: .78rem; font-weight: 600; color: #5a6478; margin-top: .55rem;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    @media (max-width: 768px) {
+      .rfm-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ---------- Section headings ---------- */
+    .section .title.is-3 {
+      position: relative;
+      display: inline-block;
+      padding-bottom: .35rem;
+    }
+    .section .title.is-3::after {
+      content: "";
+      position: absolute; left: 50%; transform: translateX(-50%);
+      bottom: -2px; width: 64px; height: 3px; border-radius: 3px;
+      background: linear-gradient(90deg, var(--rfm-primary), var(--rfm-accent));
+    }
+
+    .rfm-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 26px rgba(22, 33, 62, 0.08);
+      padding: 2rem 2.2rem;
+    }
+
+    /* ---------- Teaser ---------- */
+    .teaser img {
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(22, 33, 62, 0.14);
+    }
+    .teaser .subtitle {
+      font-family: 'Noto Sans', 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.02rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #4a5468;
+    }
+    .teaser .subtitle b {
+      font-weight: 600;
+      color: var(--rfm-primary);
+    }
+
+    /* ---------- Video carousel (one large video at a time) ---------- */
+    .results-carousel .item {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .results-carousel .item video {
+      display: block;
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 14px;
+      box-shadow: 0 12px 34px rgba(22, 33, 62, 0.18);
+      background: #000;
+    }
+
+    /* ---------- Metrics table ---------- */
+    .rfm-table-wrap { overflow-x: auto; }
+    table.rfm-metrics {
+      width: 100%; border-collapse: collapse; font-size: .95rem;
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 6px 20px rgba(22,33,62,.07);
+    }
+    table.rfm-metrics th, table.rfm-metrics td {
+      padding: .7rem 1rem; text-align: center; border-bottom: 1px solid #eef1f6;
+    }
+    table.rfm-metrics thead th {
+      background: var(--rfm-ink); color: #fff; font-weight: 600;
+    }
+    table.rfm-metrics td:first-child, table.rfm-metrics th:first-child { text-align: left; }
+    table.rfm-metrics tr.rfm-ours { background: rgba(31, 111, 235, 0.07); font-weight: 600; }
+    table.rfm-metrics .best { color: var(--rfm-primary); font-weight: 800; }
+
+    /* ---------- Result tabs ---------- */
+    #object-scale-recon .nav-link {
+      cursor: pointer; font-weight: 600; color: #5a6478; border-radius: 8px 8px 0 0;
+    }
+    #object-scale-recon .nav-link.active {
+      color: var(--rfm-primary); border-color: var(--rfm-primary) var(--rfm-primary) #fff;
+    }
+
+    .rfm-tag {
+      display:inline-block; background: var(--rfm-soft); color: var(--rfm-primary-dark);
+      border-radius: 999px; padding: .15rem .7rem; font-size: .8rem; font-weight: 700;
+      margin: 0 .2rem;
+    }
+  </style>
 </head>
 
 <body>
 
-
-  <section class="hero">
+  <!-- ======================= HERO ======================= -->
+  <section class="hero rfm-hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Render-FM: A Feedforward Model for Real-time Photorealistic Volumetric Rendering</h1>
+
+            <!-- Venue badge -->
+            <span class="rfm-venue"><span class="dot"></span>ECCV 2026</span>
+
+            <h1 class="title is-1 publication-title">Render-FM: Feedforward Model for Real-time Photorealistic Volumetric Rendering</h1>
+
             <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
+              <!-- Paper author order: Gao, Planche, Zheng, Choudhuri, Nguyen, Chen, Wu -->
               <span class="author-block">
-                <a href=https://sites.google.com/site/gaozhongpai/home target="_blank">Zhongpai Gao</a>,</span>
-              <span class="author-block">
-                <a href="https://mzhengrpi.github.io/" target="_blank">Meng Zheng</a>,
-              </span>
+                <a href="https://sites.google.com/site/gaozhongpai/home" target="_blank">Zhongpai Gao</a>,</span>
               <span class="author-block">
                 <a href="https://planche.me/" target="_blank">Benjamin Planche</a>,</span>
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=KQnKUHKGFdUC&hl=en" target="_blank">Anwesa
-                  Choudhuri</a>,
-              </span>
+                <a href="https://mzhengrpi.github.io/" target="_blank">Meng Zheng</a>,</span>
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=S2BT6ogAAAAJ&hl=en" target="_blank">Terrence
-                  Chen</a>,
-              </span>
+                <a href="https://scholar.google.com/citations?user=KQnKUHKGFdUC&hl=en" target="_blank">Anwesa Choudhuri</a>,</span>
               <span class="author-block">
-                <a href="https://wuziyan.com/" target="_blank">Ziyan Wu</a>
-              </span>
+                <a href="https://nv-nguyen.github.io/" target="_blank">Van Nguyen Nguyen</a>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=S2BT6ogAAAAJ&hl=en" target="_blank">Terrence Chen</a>,</span>
+              <span class="author-block">
+                <a href="https://wuziyan.com/" target="_blank">Ziyan Wu</a></span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block">United Imaging Intelligence, Boston MA, USA</span>
-              <span class="eql-cntrb"><small><br>{first.last}@uii-ai.com</small></span>
+              <span class="rfm-affil">United Imaging Intelligence, Boston, MA, USA</span>
             </div>
 
             <div class="column has-text-centered">
               <div class="publication-links">
-                <!-- Arxiv PDF link -->
-                
-                <!-- ArXiv abstract Link -->
+
+                <!-- arXiv -->
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/2505.17338" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
+                    class="external-link button is-normal is-rounded">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
                     <span>arXiv</span>
                   </a>
                 </span>
 
-                <!-- Notebook link -->
+                <!-- NotebookLM podcast -->
                 <span class="link-block">
-                  <a href="https://notebooklm.google.com/notebook/f6d9d8a7-d89d-43e3-a9b6-170e91332055/audio"
-                    target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-podcast"></i>
-                    </span>
+                  <a href="https://notebooklm.google.com/notebook/f6d9d8a7-d89d-43e3-a9b6-170e91332055/artifact/fff30a66-ff6c-4335-9d49-20b3d056fcb6?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_"
+                    target="_blank" class="external-link button is-normal is-rounded">
+                    <span class="icon"><i class="fas fa-podcast"></i></span>
                     <span>NotebookLM</span>
                   </a>
                 </span>
@@ -125,177 +347,205 @@
     </div>
   </section>
 
+  <!-- ======================= STAT STRIP ======================= -->
+  <div class="rfm-stats">
+    <div class="rfm-stat"><div class="num">500&times;</div><div class="lbl">Faster prep</div></div>
+    <div class="rfm-stat"><div class="num">2.8&nbsp;s</div><div class="lbl">CT &rarr; render</div></div>
+    <div class="rfm-stat"><div class="num">328+</div><div class="lbl">FPS real-time</div></div>
+  </div>
 
-  <!-- Teaser image -->
+  <!-- ======================= TEASER ======================= -->
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <img src="static\images\teaser.png" alt="Teaser Image" id="tree" style="height: 100%; width: 100%;">
-        <h2 class="subtitle has-text-centered">
-          Pipeline comparison of a) 6DGS with per-scan optimization and b) Our Render-FM with feed-forward prediction.
+        <img src="static/images/teaser.png" alt="Render-FM pipeline comparison" id="tree" style="height: 100%; width: 100%;">
+        <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
+          Pipeline comparison: (a) 6DGS requires <b>per-scan optimization</b> (≈1 hour) and shows artifacts under sparse views;
+          (b) our <b>Render-FM</b> produces high-quality renderings via a single <b>2.8&nbsp;s feedforward pass</b>.
         </h2>
       </div>
     </div>
   </section>
-  <!-- End teaser image -->
 
-  <!-- Paper abstract -->
+  <!-- ======================= ABSTRACT ======================= -->
   <section class="section hero is-light">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
+          <div class="content has-text-justified rfm-card">
             <p>
-              Volumetric rendering of Computed Tomography (CT) scans is crucial for visualizing complex 3D anatomical structures in medical imaging. Current high-fidelity approaches, especially neural rendering techniques, require time-consuming per-scene optimization, limiting clinical applicability due to computational demands and poor generalizability. We propose Render-FM, a novel feedforward model for direct, real-time volumetric rendering of CT scans. Render-FM employs an encoder-decoder architecture that directly regresses 6D Gaussian Splatting (6DGS) parameters from CT volumes, eliminating per-scan optimization through large-scale pre-training on diverse medical data. By integrating robust feature extraction with the expressive power of 6DGS, our approach efficiently generates high-quality, real-time interactive 3D visualizations across diverse clinical CT data. Experiments demonstrate that Render-FM achieves visual fidelity comparable or superior to specialized per-scan methods while drastically reducing preparation time from nearly an hour to seconds for a single inference step. This advancement enables seamless integration into real-time surgical planning and diagnostic workflows. </p>
+              Photorealistic volumetric rendering of CT scans greatly benefits clinical workflows, yet neural
+              approaches such as Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS) require prohibitive
+              per-scan optimization (hours for NeRF, about 30 minutes for 3DGS), making them impractical in clinical
+              settings. We propose <b>Render-FM</b>, a feedforward model that eliminates this bottleneck by directly
+              regressing 6D Gaussian Splatting (6DGS) parameters from a CT volume in a single <b>2.8-second forward
+              pass</b>, a <b>500&times; speedup</b> over per-scan optimization. To bridge the domain gap between natural
+              scene reconstruction and medical volumetric rendering, we introduce <b>Anatomy-Guided Priming (AGP)</b>,
+              which incorporates segmentation masks and transfer functions as structural and appearance priors,
+              information that existing Gaussian splatting methods overlook. Built on an nnU-Net-inspired 3D U-Net
+              trained on diverse CT scans, Render-FM predicts per-voxel 6DGS parameters and supports immediate real-time
+              rendering. Unlike per-scan methods, it generalizes to unseen anatomies, novel transfer functions, and
+              enables compositional organ visualization with zero additional preparation time. Optional 89-second
+              fine-tuning further improves quality, surpassing per-scan optimized baselines.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End paper abstract -->
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Interactive Demos on Laptop</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="resources\video\InteractiveDemo_CT_ORG_Volume2_Render-FM.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="resources\video\InteractiveDemo_CT_ORG_Volume2_Render-FM+FT.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="resources\video\InteractiveDemo_CT_ORG_Volume2_6DGS.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video4">
-          <video poster="" id="video4" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="resources\video\InteractiveDemo_CT_ORG_Volume2_6DGS+AGP.mp4"
-            type="video/mp4">
-          </video>
+  <!-- ======================= VIDEO CAROUSEL ======================= -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3 has-text-centered">Interactive Demos on a Laptop</h2>
+        <p class="has-text-centered" style="margin-bottom:1.5rem;color:#5a6478;">
+          Render-FM runs interactively on a single laptop RTX 2000 Ada GPU.
+        </p>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-video1">
+            <video poster="" id="video1" autoplay controls muted loop playsinline>
+              <source src="resources/video/InteractiveDemo_CT_ORG_Volume2_Render-FM.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video2">
+            <video poster="" id="video2" autoplay controls muted loop playsinline>
+              <source src="resources/video/InteractiveDemo_CT_ORG_Volume2_Render-FM+FT.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video3">
+            <video poster="" id="video3" autoplay controls muted loop playsinline>
+              <source src="resources/video/InteractiveDemo_CT_ORG_Volume2_6DGS.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video4">
+            <video poster="" id="video4" autoplay controls muted loop playsinline>
+              <source src="resources/video/InteractiveDemo_CT_ORG_Volume2_6DGS+AGP.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End video carousel -->
+  </section>
 
-<!-- Image carousel -->
+  <!-- ======================= RESULTS TABLE ======================= -->
   <section class="section">
     <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width has-text-centered">
+          <h2 class="title is-3">Quantitative Results</h2>
+          <p class="content has-text-centered" style="color:#5a6478;">
+            Comparison on TotalSegmentator (in-domain) and CT-ORG (out-of-domain). Render-FM matches or beats
+            per-scan optimized 6DGS while reducing preparation time by <b>two to three orders of magnitude</b>.
+          </p>
+          <div class="rfm-table-wrap">
+            <table class="rfm-metrics">
+              <thead>
+                <tr>
+                  <th>Setting</th><th>Method</th>
+                  <th>SSIM&uarr;</th><th>PSNR&uarr;</th><th>LPIPS&darr;</th><th>Time&darr;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td rowspan="4"><b>TotalSeg</b><br><small>ID, Seen TF</small></td>
+                    <td>6DGS</td><td>0.912</td><td>26.63</td><td>0.096</td><td>1463.9 s</td></tr>
+                <tr><td>6DGS + AGP (Ours)</td><td>0.925</td><td>28.92</td><td>0.093</td><td>1786.5 s</td></tr>
+                <tr class="rfm-ours"><td>Render-FM (Ours)</td><td>0.919</td><td>27.30</td><td>0.097</td><td class="best">2.8 s</td></tr>
+                <tr class="rfm-ours"><td>Render-FM + FT (Ours)</td><td class="best">0.937</td><td class="best">31.67</td><td class="best">0.088</td><td>89.4 s</td></tr>
 
-      <!-- Results. -->
-      <div class="columns is-centered ">
+                <tr><td rowspan="4"><b>CT-ORG</b><br><small>OOD, Seen TF</small></td>
+                    <td>6DGS</td><td>0.903</td><td>25.97</td><td>0.105</td><td>1528.7 s</td></tr>
+                <tr><td>6DGS + AGP (Ours)</td><td>0.926</td><td>29.36</td><td>0.091</td><td>2261.9 s</td></tr>
+                <tr class="rfm-ours"><td>Render-FM (Ours)</td><td>0.918</td><td>26.21</td><td>0.092</td><td class="best">2.6 s</td></tr>
+                <tr class="rfm-ours"><td>Render-FM + FT (Ours)</td><td class="best">0.940</td><td class="best">32.48</td><td class="best">0.082</td><td>136.2 s</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:.8rem;color:#7a8499;font-size:.85rem;">
+            Bold = best in block. Full results (Unseen TF, compositional Skeleton group, CTPelvic1K) are in the paper.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= IMAGE COMPARISON SLIDER ======================= -->
+  <section class="section" style="padding-top:0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Results</h2>
-
-          <h3 class="title is-4">Comparison wtih 6DGS</h3>
+          <h2 class="title is-3 has-text-centered">Qualitative Comparison</h2>
 
           <div class="content has-text-justified">
             <p>
-              Here, we present the qualitative comparison results of 6DGS, 6DGS + AGP (Ours), Render-FM (Ours), Render-FM (Ours) + FT, and Ground Truth. Note that, this is under <em><b>sparse-view setting</b></em> of 20 views for training 6DGS or fine-tuning Render-FM.
+              Qualitative comparison of <span class="rfm-tag">6DGS</span>
+              <span class="rfm-tag">6DGS + AGP (Ours)</span>
+              <span class="rfm-tag">Render-FM (Ours)</span>
+              <span class="rfm-tag">Render-FM + FT (Ours)</span>
+              <span class="rfm-tag">Ground Truth</span>.
+              Drag the dividers to compare. Results are under a <em><b>sparse-view setting</b></em> of 20 views for
+              training 6DGS or fine-tuning Render-FM.
             </p>
           </div>
 
           <div class="container">
             <ul class="nav nav-tabs nav-fill nav-justified" id="object-scale-recon">
-              <li class="nav-item">
-                <a class="nav-link" onclick="objectSceneEvent(0)">ID1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="objectSceneEvent(1)">ID2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" onclick="objectSceneEvent(2)">OOD1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="objectSceneEvent(3)">OOD2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="objectSceneEvent(4)">OOD1-TF</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="objectSceneEvent(5)">OOD1-TF</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="objectSceneEvent(6)">OOD1-Skeleton</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="objectSceneEvent(7)">OOD2-Skeleton</a>
-              </li>
+              <li class="nav-item"><a class="nav-link" onclick="objectSceneEvent(0)">ID&nbsp;1</a></li>
+              <li class="nav-item"><a class="nav-link" onclick="objectSceneEvent(1)">ID&nbsp;2</a></li>
+              <li class="nav-item"><a class="nav-link" onclick="objectSceneEvent(2)">OOD&nbsp;1</a></li>
+              <li class="nav-item"><a class="nav-link" onclick="objectSceneEvent(3)">OOD&nbsp;2</a></li>
+              <li class="nav-item"><a class="nav-link active" onclick="objectSceneEvent(4)">OOD&nbsp;TF&nbsp;1</a></li>
+              <li class="nav-item"><a class="nav-link" onclick="objectSceneEvent(5)">OOD&nbsp;TF&nbsp;2</a></li>
+              <li class="nav-item"><a class="nav-link" onclick="objectSceneEvent(6)">OOD&nbsp;Skeleton&nbsp;1</a></li>
+              <li class="nav-item"><a class="nav-link" onclick="objectSceneEvent(7)">OOD&nbsp;Skeleton&nbsp;2</a></li>
             </ul>
             <div class="b-dics" style="width: 2600px; font-weight: 800;">
-              <img src="resources/image/OOD1/6dgs.png" alt="6DGS">
-              <img src="resources/image/OOD1/6dgs_agp.png" alt="6DGS + AGP(Ours)">
-              <img src="resources/image/OOD1/renderfm.png" alt="Render-FM(Ours)">
-              <img src="resources/image/OOD1/renderfm_ft.png" alt="Render-FM(Ours) + FT">
-              <img src="resources/image/OOD1/gt.png" alt="GT">
+              <img src="resources/image/OOD-TF1/6dgs.png" alt="6DGS">
+              <img src="resources/image/OOD-TF1/6dgs_agp.png" alt="6DGS + AGP (Ours)">
+              <img src="resources/image/OOD-TF1/renderfm.png" alt="Render-FM (Ours)">
+              <img src="resources/image/OOD-TF1/renderfm_ft.png" alt="Render-FM (Ours) + FT">
+              <img src="resources/image/OOD-TF1/gt.png" alt="Ground Truth">
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End image carousel -->
 
-  <!--BibTex citation -->
+  <!-- ======================= BIBTEX ======================= -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{gao2025renderfm,
-      title={Render-FM: A Feedforward Model for Real-time Photorealistic Volumetric Rendering}, 
-      author={Zhongpai Gao and Meng Zheng and Benjamin Planche and Anwesa Choudhuri and Terrence Chen and Ziyan Wu},
-      year={2025},
-      eprint={2505.17338},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2505.17338}, 
+      <pre><code>@inproceedings{gao2026renderfm,
+  title     = {Render-FM: Feedforward Model for Real-time Photorealistic Volumetric Rendering},
+  author    = {Gao, Zhongpai and Planche, Benjamin and Zheng, Meng and
+               Choudhuri, Anwesa and Nguyen, Van Nguyen and Chen, Terrence and Wu, Ziyan},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  year      = {2026}
 }</code></pre>
     </div>
   </section>
-  <!--End BibTex citation -->
 
-
+  <!-- ======================= FOOTER ======================= -->
   <footer class="footer">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-8">
-          <div class="content">
-
+          <div class="content has-text-centered">
             <p>
-              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
-                target="_blank">Academic Project Page Template</a> which was adopted from the <a
-                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. This website is licensed under a <a rel="license"
-                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              This page was built using the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>,
+              adapted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              Licensed under a
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
                 Commons Attribution-ShareAlike 4.0 International License</a>.
             </p>
-
           </div>
         </div>
       </div>
     </div>
   </footer>
-
-  <!-- Statcounter tracking code -->
-
-  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-  <!-- End of Statcounter Code -->
 
 </body>
 
