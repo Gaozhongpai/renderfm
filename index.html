@@ -119,8 +119,22 @@
     }
     .rfm-affil small { color: rgba(255,255,255,0.75); }
     @media (max-width: 768px) {
-      .rfm-hero .publication-title { font-size: 2.1rem; }
-      .rfm-hero .publication-authors { font-size: 1.02rem; }
+      .rfm-hero { padding: 2.2rem 1.1rem 2.6rem; }
+      .rfm-hero .publication-title {
+        font-size: 1.9rem;
+        line-height: 1.2;
+        margin-bottom: 1.1rem;
+      }
+      .rfm-hero .publication-authors {
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+      /* Let names flow and pack several per line instead of one each */
+      .rfm-hero .publication-authors .author-block {
+        margin: 0 .25rem;
+        white-space: normal;
+      }
+      .rfm-affil { font-size: .95rem; margin-top: .7rem; }
     }
 
     /* ---------- Venue badge ---------- */
@@ -190,7 +204,23 @@
       text-transform: uppercase; letter-spacing: 1px;
     }
     @media (max-width: 768px) {
-      .rfm-stats { grid-template-columns: repeat(2, 1fr); }
+      .rfm-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: .6rem;
+        margin-top: -1.6rem;
+        padding: 0 .9rem;
+      }
+      /* Compact stacked cards, three across */
+      .rfm-stat {
+        padding: .85rem .5rem;
+        border-radius: 12px;
+      }
+      .rfm-stat .num { font-size: 1.55rem; }
+      .rfm-stat .lbl {
+        margin-top: .3rem;
+        font-size: .6rem;
+        letter-spacing: .4px;
+      }
     }
 
     /* ---------- Section headings ---------- */
