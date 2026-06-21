@@ -410,14 +410,19 @@
               per-scan optimization (hours for NeRF, about 30 minutes for 3DGS), making them impractical in clinical
               settings. We propose <b>Render-FM</b>, a feedforward model that eliminates this bottleneck by directly
               regressing 6D Gaussian Splatting (6DGS) parameters from a CT volume in a single <b>2.8-second forward
-              pass</b>, a <b>500&times; speedup</b> over per-scan optimization. To bridge the domain gap between natural
-              scene reconstruction and medical volumetric rendering, we introduce <b>Anatomy-Guided Priming (AGP)</b>,
-              which incorporates segmentation masks and transfer functions as structural and appearance priors,
-              information that existing Gaussian splatting methods overlook. Built on an nnU-Net-inspired 3D U-Net
-              trained on diverse CT scans, Render-FM predicts per-voxel 6DGS parameters and supports immediate real-time
-              rendering. Unlike per-scan methods, it generalizes to unseen anatomies, novel transfer functions, and
-              enables compositional organ visualization with zero additional preparation time. Optional 89-second
-              fine-tuning further improves quality, surpassing per-scan optimized baselines.
+              pass</b>, a <b>500&times; speedup</b> over per-scan optimization.
+            </p>
+            <p>
+              To bridge the domain gap between natural scene reconstruction and medical volumetric rendering, we
+              introduce <b>Anatomy-Guided Priming (AGP)</b>, which incorporates segmentation masks and transfer
+              functions as structural and appearance priors, information that existing Gaussian splatting methods
+              overlook. Built on an nnU-Net-inspired 3D U-Net trained on diverse CT scans, Render-FM predicts per-voxel
+              6DGS parameters and supports immediate real-time rendering.
+            </p>
+            <p>
+              Unlike per-scan methods, Render-FM generalizes to unseen anatomies, novel transfer functions, and enables
+              compositional organ visualization with zero additional preparation time. Optional 89-second fine-tuning
+              further improves quality, surpassing per-scan optimized baselines.
             </p>
           </div>
         </div>
