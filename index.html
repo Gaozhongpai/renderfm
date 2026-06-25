@@ -27,6 +27,9 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Bulma and Font Awesome -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -311,19 +314,37 @@
       margin: 0 .2rem;
     }
   </style>
+  <!-- NDSplat theme (loaded last so it wins the cascade) -->
+  <link rel="stylesheet" href="static/css/ndsplat-theme.css">
+  <script defer src="static/js/ndsplat-nav.js"></script>
 </head>
 
 <body>
 
+  <!-- ============ NDSplat NAV ============ -->
+  <header class="nd-nav" id="ndNav">
+    <div class="nd-nav-inner">
+      <a class="nd-brand" href="https://gaozhongpai.github.io/ndsplat/"><span class="mk">ND</span>Splat</a>
+      <nav class="nd-nav-links">
+        <a href="https://gaozhongpai.github.io/6dgs/">6DGS</a>
+        <a href="https://gaozhongpai.github.io/7dgs/">7DGS</a>
+        <a href="https://rongliu-leo.github.io/universal-beta-splatting/">UBS</a>
+        <a href="https://gaozhongpai.github.io/ndsplat/"><em>d</em>GS/<em>d</em>BS</a>
+        <a href="https://gaozhongpai.github.io/renderfm/" class="current">Render-FM</a>
+      </nav>
+    </div>
+  </header>
+
   <!-- ======================= HERO ======================= -->
-  <section class="hero rfm-hero">
+  <section class="hero rfm-hero nd-hero">
+    <div class="nd-hero-bg" aria-hidden="true"></div>
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
 
             <!-- Venue badge -->
-            <span class="rfm-venue"><span class="dot"></span>ECCV 2026</span>
+            <span class="rfm-venue nd-venue"><span class="dot"></span>ECCV 2026</span>
 
             <h1 class="title is-1 publication-title">Render-FM: Feedforward Model for Real-time Photorealistic Volumetric Rendering</h1>
 
@@ -378,14 +399,14 @@
   </section>
 
   <!-- ======================= STAT STRIP ======================= -->
-  <div class="rfm-stats">
-    <div class="rfm-stat"><div class="num">500&times;</div><div class="lbl">Faster prep</div></div>
-    <div class="rfm-stat"><div class="num">2.8&nbsp;s</div><div class="lbl">CT &rarr; render</div></div>
-    <div class="rfm-stat"><div class="num">328+</div><div class="lbl">FPS real-time</div></div>
+  <div class="rfm-stats nd-stats">
+    <div class="rfm-stat nd-stat"><div class="num">500&times;</div><div class="lbl">Faster prep</div></div>
+    <div class="rfm-stat nd-stat"><div class="num">2.8&nbsp;s</div><div class="lbl">CT &rarr; render</div></div>
+    <div class="rfm-stat nd-stat"><div class="num">328+</div><div class="lbl">FPS real-time</div></div>
   </div>
 
   <!-- ======================= TEASER ======================= -->
-  <section class="hero teaser">
+  <section class="hero teaser nd-reveal">
     <div class="container is-max-desktop">
       <div class="hero-body">
         <img src="static/images/teaser.png" alt="Render-FM pipeline comparison" id="tree" style="height: 100%; width: 100%;">
@@ -398,7 +419,7 @@
   </section>
 
   <!-- ======================= ABSTRACT ======================= -->
-  <section class="section hero is-light">
+  <section class="section hero is-light nd-reveal">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -431,7 +452,7 @@
   </section>
 
   <!-- ======================= VIDEO CAROUSEL ======================= -->
-  <section class="hero is-small">
+  <section class="hero is-small nd-reveal">
     <div class="hero-body">
       <div class="container">
         <h2 class="title is-3 has-text-centered">Interactive Demos on a Laptop</h2>
@@ -465,7 +486,7 @@
   </section>
 
   <!-- ======================= RESULTS TABLE ======================= -->
-  <section class="section">
+  <section class="section nd-reveal">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column is-full-width has-text-centered">
@@ -506,7 +527,7 @@
   </section>
 
   <!-- ======================= IMAGE COMPARISON SLIDER ======================= -->
-  <section class="section" style="padding-top:0;">
+  <section class="section nd-reveal" style="padding-top:0;">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column is-full-width">
@@ -544,6 +565,40 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RELATED WORK (cross-reference network) ============ -->
+  <section class="section nd-related nd-reveal">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered" style="margin-bottom: 2rem;">The N-Dimensional Splatting Line</h2>
+      <div class="nd-related-grid">
+        <a class="nd-rel" href="https://gaozhongpai.github.io/6dgs/">
+          <span class="nd-rel-venue">ICLR 2025</span>
+          <span class="nd-rel-name">6DGS</span>
+          <span class="nd-rel-desc">Direction-aware 6D Gaussians for view-dependent volumetric rendering.</span>
+        </a>
+        <a class="nd-rel" href="https://gaozhongpai.github.io/7dgs/">
+          <span class="nd-rel-venue">ICCV 2025</span>
+          <span class="nd-rel-name">7DGS</span>
+          <span class="nd-rel-desc">Unified spatial-temporal-angular Gaussians for dynamic, view-dependent scenes.</span>
+        </a>
+        <a class="nd-rel" href="https://rongliu-leo.github.io/universal-beta-splatting/">
+          <span class="nd-rel-venue">ICLR 2026</span>
+          <span class="nd-rel-name">UBS</span>
+          <span class="nd-rel-desc">Universal Beta Splatting: anisotropic Beta kernels across space, angle, and time.</span>
+        </a>
+        <a class="nd-rel" href="https://gaozhongpai.github.io/ndsplat/">
+          <span class="nd-rel-venue">Latest</span>
+          <span class="nd-rel-name"><em class="tight">d</em>GS / <em class="tight">d</em>BS</span>
+          <span class="nd-rel-desc">Direct conditional parameterization — kernel-agnostic, up to 7.7&times; faster slicing.</span>
+        </a>
+        <a class="nd-rel is-self">
+          <span class="nd-rel-venue">ECCV 2026</span>
+          <span class="nd-rel-name">Render-FM</span>
+          <span class="nd-rel-desc">Feedforward 6DGS for medical CT — 500&times; faster than per-scan optimization.</span>
+        </a>
       </div>
     </div>
   </section>
